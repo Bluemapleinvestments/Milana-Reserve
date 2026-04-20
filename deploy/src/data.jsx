@@ -1,0 +1,175 @@
+// UW model extracted from UW-Milana Reserve - Freddie - Feb 16th.xlsx
+window.UW = {
+  years: ["T12","Y1","Y2","Y3","Y4","Y5","Y6","Y7","Y8","Y9","Y10","Y11"],
+  calYears: ["T12","2026","2027","2028","2029","2030","2031","2032","2033","2034","2035","2036"],
+  gpr:   [4109818,4211214,4439204,4626837,4788776,4956383,5105075,5258227,5415974,5578453,5745807,5918181],
+  egi:   [4474291,4523020,4808738,5004326,5176260,5354115,5514738,5680180,5850586,6026103,6206886,6378297],
+  opex:  [1876619,2084671,2149423,2213403,2278490,2345552,2414004,2484510,2557132,2631932,2708976,2787924],
+  noi:   [2597672,2438349,2659316,2790923,2897769,3008563,3100734,3195670,3293454,3394172,3497911,3590373],
+  ds:    [0,1230373,1342225,1342225,1700839,1700839,1746106,1746106,1746106,2240056,2240056,2240056],
+  cf:    [0,473516,576916,704612,449405,556641,600333,691960,786336,389593,489717,578751],
+  coc:   [0, 0.0794, 0.0967, 0.1181, 0.0753, 0.0933, 0.1006, 0.1160, 0.1318, 0.0653, 0.0821, 0.0970],
+  commonEquity: 5967258,
+  instEquity: 10160467,
+  instRepay: 12046467,
+  senior: 25812021,
+  reference: {
+    3: { irr: 0.30533, em: 2.1387, cap: 0.06 },
+    5: { irr: 0.27106, em: 2.9949, cap: 0.055 },
+    7: { irr: 0.30805, em: 3.6965, cap: 0.055 },
+  },
+};
+
+window.MR = {
+  hero: {
+    location: "Tampa, Florida",
+    meta: [
+      { v: "232", l: "Units" },
+      { v: "$37.4M", l: "Acquisition" },
+      { v: "30.5%", l: "Projected IRR · Yr 3" },
+      { v: "2.14×", l: "Equity Multiple" },
+    ],
+  },
+
+  highlights: [
+    { title: "$47K/unit discount to comps",
+      body: "Acquired at $161,207/unit — a 22.8% discount to the comp average of $208,920/unit and materially below replacement cost." },
+    { title: "Freddie Mac fixed rate",
+      body: "$25.8M senior loan at 5.20% fixed, 5-year term, 3-year IO, 30-year amortization — 61.5% LTC." },
+    { title: "$250+ rent premium runway",
+      body: "In-place rents trail the competitive set by ~$170/unit. Renovated units underwritten at a $250+ market rent premium." },
+    { title: "Zero new supply",
+      body: "No new multifamily deliveries announced in the Carrollwood submarket through 2026 — reinforcing rent growth and occupancy." },
+    { title: "Year-3 exit returns",
+      body: "Projected 30.5% IRR / 2.14× EM at 6.0% exit cap in Year 3; 27.1% IRR / 2.99× EM at Year 5." },
+    { title: "Carrollwood address",
+      body: "One of Tampa's most established submarkets — minutes from I-275, Westshore Business District, and 2,200+ hospital beds." },
+  ],
+
+  exec: [
+    { label: "Projected IRR", val: "30.5%", sub: "Year 3 exit · 6.0% cap" },
+    { label: "Equity Multiple", val: "2.14×", sub: "Common equity basis" },
+    { label: "Purchase Price", val: "$37.4M", sub: "$161,207 / unit" },
+    { label: "Price vs. Comps", val: "−22.8%", sub: "$47,713 / unit discount" },
+    { label: "Rent Premium Target", val: "$250+", sub: "Post-renovation per unit" },
+    { label: "Senior Loan", val: "5.20%", sub: "Freddie Mac · 5-yr fixed · 3-yr IO" },
+    { label: "Occupancy", val: "95.7%", sub: "As of Aug 2025" },
+    { label: "Carrollwood Supply", val: "0", sub: "New deliveries through 2026" },
+  ],
+
+  strategy: [
+    { n: "01", tag: "Interiors", title: "All 232 units renovated",
+      body: "A two-year unit-turn program delivering premium finishes at scale — targeting $250/unit market rent premiums.",
+      bullets: ["Quartz countertops & shaker cabinets", "Stainless appliances + LED lighting", "Luxury vinyl plank flooring", "New bath mirrors & shower surrounds"],
+      kpi: { v: "$250+", l: "Market rent premium / unit" } },
+    { n: "02", tag: "Amenities", title: "Hospitality-grade common areas",
+      body: "Targeted capital into amenity areas to reduce turnover, lift NPS, and support premium pricing across the comp set.",
+      bullets: ["Modernized fitness facility", "Updated pool furniture & cabanas", "Upgraded summer kitchen", "Lakeside trail & landscaping"],
+      kpi: { v: "$25 / mo", l: "Smart Rent ancillary per unit" } },
+    { n: "03", tag: "Operations", title: "Revenue management & margin",
+      body: "A new management platform with revenue-management software, expense rationalization, and in-place pricing discipline.",
+      bullets: ["8.45% value-add GPR growth Yrs 1–2", "3.0% p.a. market GPR thereafter", "2.75% of EGI management fee", "Valet trash, EV, renter's insurance"],
+      kpi: { v: "$1,646", l: "Avg. market rent target" } },
+  ],
+
+  capStack: [
+    { k: "Net Purchase Price", v: "$37,400,000" },
+    { k: "Closing Costs", v: "$1,972,742" },
+    { k: "CapEx — Unit Renovations", v: "$2,233,000" },
+    { k: "CapEx — Common Areas", v: "$334,004" },
+    { k: "Acquisition Fee (1.0%)", v: "$374,000" },
+    { k: "All-In Cost", v: "$41,939,746", total: true },
+    { k: "Senior Loan (61.5% LTC)", v: "$25,812,021" },
+    { k: "Common Equity (37%)", v: "$5,967,258" },
+    { k: "Institutional Equity (63%)", v: "$10,160,467" },
+    { k: "Total Equity", v: "$16,127,725", total: true },
+  ],
+
+  unitMix: [
+    { units: 60, type: "1BR/1BA (A1)", sf: 532, cur: 1325, mkt: 1399 },
+    { units: 80, type: "1BR/1BA (A2)", sf: 648, cur: 1385, mkt: 1499 },
+    { units: 20, type: "2BR/1BA (B1)", sf: 848, cur: 1585, mkt: 1850 },
+    { units: 60, type: "2BR/2BA (B2)", sf: 948, cur: 1643, mkt: 1950 },
+    { units: 12, type: "2BR/2BA (B3)", sf: 1110, cur: 1829, mkt: 1999 },
+  ],
+
+  rentComps: [
+    { name: "Milana Reserve", yr: 1985, units: 232, avgSF: 737, rent: 1479, subject: true },
+    { name: "Carrollwood Station", yr: 1984, units: 336, avgSF: 791, rent: 1537 },
+    { name: "The Park on Waters", yr: 1983, units: 267, avgSF: 790, rent: 1546 },
+    { name: "Haven at Waters Edge", yr: 1985, units: 393, avgSF: 725, rent: 1432 },
+    { name: "Windsor Manor", yr: 1975, units: 194, avgSF: 1030, rent: 1718 },
+    { name: "Grande Oasis", yr: 1989, units: 926, avgSF: 892, rent: 1566 },
+    { name: "Innovo of Waters", yr: 1972, units: 196, avgSF: 1009, rent: 1841 },
+    { name: "Deerpath on the Lake", yr: 1973, units: 292, avgSF: 938, rent: 1555 },
+    { name: "Avion at Carrollwood", yr: 1986, units: 284, avgSF: 856, rent: 1548 },
+  ],
+
+  salesComps: [
+    { name: "Milana Reserve", yr: 1985, units: 232, price: 37_400_000, ppu: 161207, date: "Subject", subject: true },
+    { name: "St. James Crossing", yr: 1986, units: 264, price: 49_295_100, ppu: 186724, date: "May-24" },
+    { name: "Oak Ramble", yr: 1986, units: 256, price: 48_221_700, ppu: 188366, date: "May-24" },
+    { name: "Buena Vista", yr: 1985, units: 240, price: 42_500_000, ppu: 177083, date: "Nov-23" },
+    { name: "Valencia at Westchase", yr: 1996, units: 312, price: 69_000_000, ppu: 221154, date: "Dec-25" },
+    { name: "Magnolia Carillon", yr: 1998, units: 314, price: 97_000_000, ppu: 308917, date: "Oct-25" },
+  ],
+
+  noi: [
+    { y: "T-12", egi: 4474291, exp: 2084671, noi: 2389620, ds: 0, cf: 0 },
+    { y: "FY1 '26", egi: 4523020, exp: 2084671, noi: 2438349, ds: 1230373, cf: 473516 },
+    { y: "FY2 '27", egi: 4808738, exp: 2149423, noi: 2659316, ds: 1342225, cf: 576916 },
+    { y: "FY3 '28", egi: 5004326, exp: 2213403, noi: 2790923, ds: 1342225, cf: 704612 },
+    { y: "FY4 '29", egi: 5176260, exp: 2278490, noi: 2897769, ds: 1700839, cf: 449405 },
+    { y: "FY5 '30", egi: 5354115, exp: 2345552, noi: 3008563, ds: 1700839, cf: 556641 },
+    { y: "FY6 '31", egi: 5514738, exp: 2414004, noi: 3100734, ds: 1746106, cf: 600333 },
+  ],
+
+  coc: [7.9, 9.7, 11.8, 7.5, 9.3, 10.1],
+
+  sectors: [
+    { name: "Healthcare & Social Assistance", pct: 18 },
+    { name: "Trade & Transportation", pct: 16 },
+    { name: "Professional & Business Services", pct: 15 },
+    { name: "Leisure & Hospitality", pct: 11 },
+    { name: "Financial Activities", pct: 10 },
+    { name: "Government", pct: 9 },
+    { name: "Education", pct: 8 },
+    { name: "Other", pct: 13 },
+  ],
+
+  rankings: [
+    { rank: "#1", text: "Best Place to Live in Florida", src: "Forbes" },
+    { rank: "#1", text: "Most Desirable City in the U.S.", src: "Clever Real Estate" },
+    { rank: "#2", text: "Best Place to Start a Business", src: "WalletHub" },
+    { rank: "#4", text: "City for Quality of Life", src: "Forbes" },
+    { rank: "#4", text: "U.S. Market to Watch 2024–25", src: "PwC / ULI" },
+  ],
+
+  hospitals: [
+    { name: "AdventHealth Carrollwood", mi: 1.7, min: 5, beds: 120, x: 42, y: 58 },
+    { name: "St. Joseph's Hospital", mi: 4.3, min: 10, beds: 615, x: 56, y: 70 },
+    { name: "Kindred Hospital Central Tampa", mi: 4.3, min: 10, beds: 102, x: 62, y: 64 },
+    { name: "AdventHealth Tampa", mi: 7.7, min: 15, beds: 626, x: 70, y: 78 },
+    { name: "Moffitt Cancer Center", mi: 7.6, min: 15, beds: 314, x: 32, y: 32 },
+    { name: "James A. Haley VA", mi: 7.0, min: 14, beds: 500, x: 68, y: 40 },
+    { name: "Johns Hopkins All Children's", mi: 6.8, min: 13, beds: 259, x: 30, y: 85 },
+  ],
+
+  photos: {
+    exterior:     "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front.jpg",
+    exterior2:    "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front-2.jpg",
+    exteriorSide: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-side.jpg",
+    kitchen:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-kitchen.jpg",
+    bathroom:     "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-bathroom.jpg",
+    bedroom:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-bedroom.jpg",
+    living1:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-1.jpg",
+    living2:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-2.jpg",
+    staged:       "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-staged-2.jpg",
+    stagedWide:   "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-staged-wide.jpg",
+    fitness:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-fitness.jpg",
+    clubhouse:    "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-clubhouse-1.jpg",
+    leasing:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-leasing-office.jpg",
+    pool:         "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/pool.png",
+    site:         "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/site-plan.png",
+  },
+};
