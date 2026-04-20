@@ -1056,7 +1056,8 @@ section.tight { padding: clamp(56px, 7vw, 100px) 0; }
   .strategy { grid-template-columns: 1fr !important; }
 
   /* Two-col everything collapses */
-  .two-col { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .two-col { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+  .two-col > * { min-width: 0 !important; }
 
   /* Pull-quote big number */
   .pullquote { font-size: 28px !important; line-height: 1.15; }
@@ -1235,4 +1236,156 @@ html, body { overflow-x: hidden; }
     padding: 28px 0;
     border-right: 0;
   }
+}
+
+
+/* ========================================================================
+   MOBILE AUDIT PASS — comprehensive responsive fixes at 640px
+   ======================================================================== */
+@media (max-width: 640px) {
+  /* Rankings grid: 5 columns → 2 columns on phone (with 3rd row of 1) */
+  #market div[style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  #market div[style*="grid-template-columns: repeat(5, 1fr)"] > div {
+    padding: 20px 16px !important;
+  }
+
+  /* Any inline 3-column grid → 1 column */
+  section div[style*="grid-template-columns: 1fr 1fr 1fr"],
+  section div[style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    border-right: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Any inline 2-column grid → 1 column (conservative: stack) */
+  #market div[style*="grid-template-columns: 1fr 1fr"]:not(.metrics-grid):not(.hero-meta),
+  #financials div[style*="grid-template-columns: 1fr 1fr"]:not(.metrics-grid):not(.hero-meta),
+  #summary div[style*="grid-template-columns: 1fr 1fr"]:not(.metrics-grid):not(.hero-meta) {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Returns stepper (A/B/C/D cards) — stack, hide the centered circle divider */
+  #contact div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  #contact div[style*="border-radius: 50%"][style*="width: 44px"] { display: none !important; }
+
+  /* Returns interactive controls row: IRR + Exit tabs — stack */
+  #returns div[style*="grid-template-columns: 1fr 1fr"][style*="margin-bottom: 48px"] {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  /* Exit year tabs (Y2/Y3/Y4/Y5): let them wrap into 2 rows if needed */
+  #returns div[style*="display: flex"][style*="gap"] button[style*="flex: 1"] {
+    flex: 1 1 calc(50% - 8px) !important;
+    min-width: 0 !important;
+  }
+
+  /* Implied outcome row — stack vertically, tighter */
+  #returns div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+  }
+  #returns div[style*="grid-template-columns: 1fr 1fr 1fr"] > div > div:last-child {
+    font-size: 16px !important;
+  }
+
+  /* Gallery masonry → single column */
+  .gallery {
+    grid-template-columns: 1fr !important;
+    grid-auto-rows: auto !important;
+    gap: 12px !important;
+  }
+  .gallery > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    aspect-ratio: 4/3;
+    height: auto !important;
+  }
+
+  /* Map: force taller aspect so text stays readable */
+  .map-wrap {
+    aspect-ratio: 3/4 !important;
+  }
+
+  /* Before/After on mobile — shorter aspect so both halves visible */
+  .ba-wrap {
+    aspect-ratio: 3/4 !important;
+  }
+
+  /* Chart card (NOI Forecast) */
+  .chart-card {
+    padding: 20px !important;
+  }
+  .chart-card svg {
+    max-width: 100% !important;
+  }
+
+  /* Returns dial — cap the big number so it doesn't overflow */
+  .dial .v {
+    font-size: clamp(56px, 18vw, 96px) !important;
+  }
+
+  /* Marquee: slow down on narrow screens so text is readable */
+  .marquee {
+    font-size: 18px !important;
+    padding: 18px 0 !important;
+  }
+
+  /* Nav brand: drop separator and second label, keep just Blue Maple */
+  .nav .brand .sep,
+  .nav .brand > span:last-child { display: none !important; }
+  .nav .brand { font-size: 12px !important; }
+
+  /* Section heads: smaller number, less padding */
+  .sec-head { margin-bottom: 32px !important; }
+
+  /* Pull-quote — reduce big numbers */
+  .big-num { font-size: 38px !important; }
+
+  /* CTA Leaf — smaller */
+  #contact .reveal:first-child svg { width: 36px !important; height: auto !important; }
+
+  /* Disclaimer — already handled at 820, just tighten type */
+  .disclaimer-item h4 { font-size: 19px !important; }
+  .disclaimer-item p { font-size: 13px !important; }
+  .disclaimer-lede { font-size: 18px !important; padding-left: 16px !important; }
+
+  /* Strategy cards — tighter interior padding */
+  .strategy .card {
+    padding: 28px !important;
+  }
+  .strategy .card .n { font-size: 36px !important; }
+  .strategy .card h3 { font-size: 22px !important; }
+
+  /* Financial tables inside cream cards — allow horizontal scroll container */
+  .chart-card .table { font-size: 12px !important; }
+  .chart-card .table th,
+  .chart-card .table td { padding: 10px 8px !important; }
+
+  /* Footer rows: stack */
+  .footer-inner { gap: 20px !important; align-items: flex-start !important; }
+
+  /* Body text: avoid orphaned single-word last lines on narrow */
+  p { hyphens: auto; }
+
+  /* Tweaks toggle — smaller */
+  .tweaks-toggle { font-size: 11px !important; padding: 8px 12px !important; }
+
+  /* Horizontal rule max widths */
+  .hr-60 { width: 40px !important; }
+}
+
+/* Extra-narrow phones (< 380px) */
+@media (max-width: 380px) {
+  h1, .display { font-size: clamp(40px, 12vw, 64px) !important; }
+  .hero-meta .v { font-size: 24px !important; }
+  .metrics-grid .cell .val,
+  .metrics-grid-dynamic .cell .val { font-size: 26px !important; }
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
 }
