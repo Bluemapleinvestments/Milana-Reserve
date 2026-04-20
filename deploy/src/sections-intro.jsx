@@ -56,8 +56,8 @@ function MarqueeBar() {
       "Tampa · Carrollwood",
       "Value-Add Multifamily",
       "Freddie Mac Financed",
-      "30.5% Projected IRR",
-      "$47K/Unit Discount to Comps",
+      "27.4% Projected IRR",
+      "$49K/Unit Discount to Comps",
     ]} />
   );
 }
@@ -192,7 +192,7 @@ function Pullquote() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, borderTop: "1px solid var(--rule)", paddingTop: 24, marginTop: 24 }}>
               <div>
                 <div className="eyebrow eyebrow-dark">Entry Discount</div>
-                <div className="big-num" style={{ marginTop: 8, fontSize: 56 }}>22.8%</div>
+                <div className="big-num" style={{ marginTop: 8, fontSize: 56 }}>23.5%</div>
                 <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 6 }}>Below comparable sales average</div>
               </div>
               <div>

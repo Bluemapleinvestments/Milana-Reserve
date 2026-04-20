@@ -3,7 +3,7 @@
 function RisksSection() {
   const risks = [
     { t: "General Real Estate", p: "Real estate investments may not generate income sufficient to meet expenses. Values may be affected by local conditions, competition, and interest rates." },
-    { t: "Value-Add Execution", p: "The renovation program may cost more than budgeted, take longer to execute, or fail to achieve targeted $250/unit rent premiums." },
+    { t: "Value-Add Execution", p: "The renovation program may cost more than budgeted, take longer to execute, or fail to achieve targeted rent lifts of ~$170/unit blended." },
     { t: "Vacancy & Lease", p: "No assurance the Partnership will maintain targeted 95%+ occupancy. Tenant defaults and sustained vacancies may reduce distributions and impair debt service." },
     { t: "Leverage", p: "Leverage amplifies both returns and losses. Decreased cash flow may impair debt service, potentially resulting in default or foreclosure." },
     { t: "Market / Supply", p: "Future multifamily supply in the Carrollwood submarket could constrain rent growth and occupancy assumptions used in the underwriting." },

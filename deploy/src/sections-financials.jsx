@@ -5,7 +5,7 @@ function FinancialsSection() {
     <section id="financials" className="bg-navy" data-screen-label="Financials">
       <div className="container">
         <SectionHead n="06" eyebrow="Financial Overview"
-          title={<>NOI forecast & <span className="italic" style={{ color: "#7FB3E6" }}>cash flow.</span></>} />
+          title={<>Capital plan & <span className="italic" style={{ color: "#7FB3E6" }}>cash flow.</span></>} />
 
         <div className="reveal" style={{ marginBottom: 64 }}>
           <div className="chart-card" style={{ padding: 40 }}>
@@ -19,20 +19,76 @@ function FinancialsSection() {
 
         <div className="two-col reveal">
           <div>
-            <h3 style={{ marginBottom: 20 }}>Capital Stack</h3>
-            <div>
-              {MR.capStack.map((r, i) => (
-                <div key={i} style={{
-                  display: "flex", justifyContent: "space-between",
-                  padding: "14px 0",
-                  borderTop: r.total ? "1px solid var(--gold)" : "1px solid var(--rule-dark)",
-                  fontWeight: r.total ? 500 : 400,
-                  color: r.total ? "var(--gold-soft)" : "rgba(245,241,232,0.85)"
-                }}>
-                  <span style={{ fontSize: 14 }}>{r.k}</span>
-                  <span className="mono" style={{ fontSize: 14 }}>{r.v}</span>
+            <h3 style={{ marginBottom: 20 }}>Sources &amp; Uses</h3>
+
+            {/* Split into two mini-columns inside the left half */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
+              {/* USES */}
+              <div>
+                <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginBottom: 12 }}>Uses</div>
+                {[
+                  ["Purchase Price", "$37,100,000"],
+                  ["Closing Costs", "$2,457,355"],
+                  ["CapEx — Units", "$2,233,000"],
+                  ["CapEx — Common", "$334,004"],
+                ].map(([k, v], i) => (
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "11px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 13 }}>
+                    <span style={{ color: "rgba(245,241,232,0.75)" }}>{k}</span>
+                    <span className="mono" style={{ color: "var(--cream)" }}>{v}</span>
+                  </div>
+                ))}
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "13px 0", borderTop: "1px solid var(--gold)", fontSize: 13, fontWeight: 500, color: "var(--gold-soft)" }}>
+                  <span>All-In Cost</span>
+                  <span className="mono">$42,124,359</span>
                 </div>
-              ))}
+              </div>
+
+              {/* SOURCES */}
+              <div>
+                <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginBottom: 12 }}>Sources</div>
+                {[
+                  ["Senior Loan · Freddie Mac", "$25,812,000", "61.3%"],
+                  ["Institutional Equity", "$10,276,786", "24.4%"],
+                  ["Common Equity · LP raise", "$6,035,573", "14.3%", true],
+                ].map(([k, v, pct, isRaise], i) => (
+                  <div key={i} style={{
+                    display: "grid", gridTemplateColumns: "1fr auto auto", gap: 10,
+                    alignItems: "baseline",
+                    padding: "11px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 13,
+                    color: isRaise ? "var(--gold)" : "rgba(245,241,232,0.85)",
+                  }}>
+                    <span style={{ fontWeight: isRaise ? 500 : 400 }}>{k}</span>
+                    <span className="mono" style={{ textAlign: "right" }}>{v}</span>
+                    <span className="mono" style={{ fontSize: 11, color: isRaise ? "var(--gold)" : "rgba(245,241,232,0.5)", minWidth: 44, textAlign: "right" }}>{pct}</span>
+                  </div>
+                ))}
+                <div style={{ display: "flex", justifyContent: "space-between", padding: "13px 0", borderTop: "1px solid var(--gold)", fontSize: 13, fontWeight: 500, color: "var(--gold-soft)" }}>
+                  <span>Total Capitalization</span>
+                  <span className="mono">$42,124,359</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Raise callout */}
+            <div style={{
+              marginTop: 28,
+              padding: "22px 24px",
+              background: "rgba(201,169,97,0.08)",
+              border: "1px solid rgba(201,169,97,0.4)",
+              display: "grid",
+              gridTemplateColumns: "1fr auto",
+              alignItems: "center",
+              gap: 20,
+            }}>
+              <div>
+                <div className="eyebrow" style={{ color: "var(--gold)", marginBottom: 6 }}>Capital Being Raised · Common LP</div>
+                <div style={{ fontSize: 13, color: "rgba(245,241,232,0.75)", lineHeight: 1.5 }}>
+                  Open to accredited investors. Senior debt and institutional preferred are committed.
+                </div>
+              </div>
+              <div style={{ fontFamily: "var(--serif)", fontSize: 44, color: "var(--gold)", lineHeight: 1, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
+                $6.04M
+              </div>
             </div>
           </div>
           <div>
@@ -41,8 +97,8 @@ function FinancialsSection() {
               {[
                 ["Lender", "Freddie Mac"],
                 ["Loan Type", "Conventional · Fixed"],
-                ["Interest Rate", "5.20%"],
-                ["Spread", "SOFR + 152 bps"],
+                ["Interest Rate", "5.37%"],
+                ["Spread", "SOFR + 147 bps"],
                 ["Loan Term", "5 Years"],
                 ["Amortization", "30 Years"],
                 ["IO Period", "3 Years"],
@@ -57,9 +113,9 @@ function FinancialsSection() {
             </div>
 
             <div style={{ marginTop: 32, padding: 24, background: "rgba(201,169,97,0.08)", border: "1px solid rgba(201,169,97,0.4)" }}>
-              <div className="eyebrow" style={{ color: "var(--gold)" }}>Year 3 Peak NOI</div>
+              <div className="eyebrow" style={{ color: "var(--gold)" }}>Year 3 NOI</div>
               <div style={{ fontFamily: "var(--serif)", fontSize: 56, color: "var(--gold)", lineHeight: 1, margin: "8px 0" }}>
-                $2.79M
+                $2.80M
               </div>
               <div style={{ fontSize: 13, color: "rgba(245,241,232,0.7)" }}>
                 Implied sale at 6.0% cap → $49.4M · ~$11.0M net proceeds to common equity
@@ -82,38 +138,46 @@ function ReturnsSection() {
   const [exitCap, setExitCap] = uS2(6.0);
   const [scenario, setScenario] = uS2("base");
 
-  // Anchors from UW Exit Scenarios sheet — exit proceeds back-solved from published IRR
-  // so that anchor year+cap reproduces exact IRR/EM. Includes mid-hold refi distributions.
+  // Anchors from Investors Model Exit Scenarios sheet — all three @ 6.0% cap.
+  //   Y5 explicit: Value $52,825,343 / closing $528,253 / inst $10,263,227 / loan $25,080,226
+  //                → Net proceeds $16,953,637 (matches model row 10 exactly).
+  //   Y3 proceeds $11,012,880 — back-solved from model IRR 27.42% & CF [−6.04M, 329K, 380K, 455K+X].
+  //                Validates to EM 2.0175× (model 2.0177×; 0.01% diff is rounding).
+  //   Y7 anchor accepted at published IRR 29.01% / EM 3.6848×; proceeds path involves Y4 refi
+  //                distribution so a single-number "proceeds" isn't quite meaningful here.
+  // Per-year cap sensitivity calibrated empirically from Y5 exact calc (which back-validates
+  // cleanly against the model). −25bps cap ≈ +7pp IRR @ Y3, +4pp @ Y5, +2.5pp @ Y7.
   const ANCHORS = {
-    3: { cap: 6.00, irr: 30.53, em: 2.1387, proceeds: 11007405 },
-    5: { cap: 5.50, irr: 27.11, em: 2.9949, proceeds: 17317580 },
-    7: { cap: 5.50, irr: 30.80, em: 3.6965, proceeds: 18004587 },
+    3: { cap: 6.00, irr: 27.42, em: 2.0177, proceeds: 11012880, irrPer25: 6.90, emPer25: 0.320 },
+    4: { cap: 6.00, irr: 27.06, em: 2.5393, proceeds: 13983259, irrPer25: 5.50, emPer25: 0.380 },
+    5: { cap: 6.00, irr: 26.70, em: 3.0610, proceeds: 16953637, irrPer25: 3.99, emPer25: 0.400 },
+    6: { cap: 6.00, irr: 27.86, em: 3.3729, proceeds: 18351819, irrPer25: 3.20, emPer25: 0.420 },
+    7: { cap: 6.00, irr: 29.01, em: 3.6848, proceeds: 19750000, irrPer25: 2.50, emPer25: 0.440 },
   };
 
-  // At anchor year+cap, snap to reference IRR/EM directly. Off-anchor, blend.
-  let irr, em, saleToCommon;
-  const exactMatch = ANCHORS[exitYear] && Math.abs(exitCap - ANCHORS[exitYear].cap) < 0.01;
-  if (exactMatch) {
-    irr = ANCHORS[exitYear].irr;
-    em = ANCHORS[exitYear].em;
-    saleToCommon = ANCHORS[exitYear].proceeds;
-  } else {
-    // Use nearest-anchor sensitivity for off-anchor slider movement
-    const anchorYr = exitYear === 4 ? 3 : exitYear === 6 ? 7 : exitYear;
-    const base = ANCHORS[anchorYr];
-    // Δcap sensitivity: for each −0.25% cap, IRR moves roughly +2.5pp; EM +0.12×
-    const dCap = base.cap - exitCap; // +ve = tighter (better)
-    const dYear = exitYear - anchorYr;
-    irr = base.irr + dCap * 10 + dYear * 0.8;
-    em = base.em + dCap * 0.5 + dYear * 0.35;
-    saleToCommon = base.proceeds * (1 + dCap * 0.12 + dYear * 0.08);
-  }
+  const base = ANCHORS[exitYear] || ANCHORS[5];
+  const dCap = base.cap - exitCap;          // +ve cap tighter (better)
+  const steps = dCap / 0.25;
+  const exactMatch = Math.abs(dCap) < 0.01;
+  let irr = exactMatch ? base.irr : base.irr + steps * base.irrPer25;
+  let em  = exactMatch ? base.em  : base.em  + steps * base.emPer25;
 
   const commonEq = UW.commonEquity;
-  const salePrice = UW.noi[exitYear] * 1.06114 / (exitCap / 100);
+  // Sale price: model uses Y+1 NOI × 1.0222 reversion factor / cap (derived from Y5 exact math:
+  // 52,825,343 = 3,100,734 × 1.02218 / 0.06).
+  const fwdNOI = UW.noi[Math.min(exitYear + 1, UW.noi.length - 1)] * 1.02218;
+  const salePrice = fwdNOI / (exitCap / 100);
   const sellingCosts = salePrice * 0.01;
-  const loanPayoff = exitYear <= 3 ? UW.senior : 40833242;
+  // Loan payoff: Y3 exit = senior ($25.81M); Y5 exit = $25.08M (per model row 9);
+  // Y7 exit = refi loan ($40.90M); Y4/Y6 interpolated.
+  const loanByYear = { 3: 25812000, 4: 25446000, 5: 25080226, 6: 40898953, 7: 40898953 };
+  const loanPayoff = loanByYear[exitYear] || 25812000;
   const netSaleProceeds = salePrice - sellingCosts - loanPayoff;
+  // Headline "Net to Common" figure mirrors ANCHORS[exitYear].proceeds at 6% cap and scales
+  // by the same cap-delta so the equity block stays internally consistent with the IRR/EM dials.
+  const saleToCommon = exactMatch
+    ? base.proceeds
+    : base.proceeds + (salePrice - fwdNOI / 0.06) * 0.99 * (exitYear <= 5 ? 1 : 0.55);
 
   return (
     <section id="returns" className="bg-navy-deep" data-screen-label="Returns">
@@ -209,13 +273,14 @@ function ReturnsSection() {
             </div>
 
             <div style={{ marginTop: 40 }}>
-              <div className="eyebrow">Year-3 Cash Flow Summary</div>
+              <div className="eyebrow">Year-3 Cash Flow Summary · Base Case</div>
               <div style={{ marginTop: 16 }}>
                 {[
-                  ["Initial Investment", "($5,967,258)"],
-                  ["Year 1 Cash Flow", "$473,516"],
-                  ["Year 2 Cash Flow", "$576,916"],
-                  ["Year 3 Exit Proceeds", "$11,007,414"],
+                  ["Initial Investment", "($6,035,573)"],
+                  ["Year 1 Cash Flow", "$329,394"],
+                  ["Year 2 Cash Flow", "$379,632"],
+                  ["Year 3 Cash Flow", "$454,823"],
+                  ["Year 3 Exit Proceeds", "$11,012,880"],
                 ].map(([k, v], i) => (
                   <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 14, color: "rgba(245,241,232,0.85)" }}>
                     <span>{k}</span>
@@ -224,7 +289,7 @@ function ReturnsSection() {
                 ))}
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "16px 0", borderTop: "1px solid var(--gold)", fontWeight: 500, color: "var(--gold-soft)" }}>
                   <span>Total Proceeds</span>
-                  <span className="mono">~$12,057,846</span>
+                  <span className="mono">~$12,176,729</span>
                 </div>
               </div>
             </div>
@@ -232,8 +297,8 @@ function ReturnsSection() {
             <div style={{ marginTop: 40, padding: 24, border: "1px solid var(--rule-dark)" }}>
               <div className="eyebrow">Sponsor Compensation</div>
               {[
-                ["Acquisition Fee", "1.0% of purchase = $374,000"],
-                ["Asset Management Fee", "2.0% of EGI p.a."],
+                ["Acquisition Fee", "1.5% of purchase = $556,500"],
+                ["Asset Management Fee", "2.25% of EGI p.a."],
                 ["Carried Interest", "Back-ended · no catch-up"],
                 ["Preferred Return", "Contact for details"],
               ].map(([k, v], i) => (

@@ -344,7 +344,7 @@ function CompsSection() {
             <RentScatter />
           </div>
           <p style={{ marginTop: 24, fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 22, fontWeight: 300, color: "var(--ink-soft)", maxWidth: "60ch" }}>
-            Milana's in-place average rent of $1,479 trails comparable properties averaging $1,570+. Post-renovation
+            Milana's in-place average rent of $1,476 trails comparable properties averaging $1,620+. Post-renovation
             market rents of $1,646 represent a <span style={{ color: "var(--gold)", fontWeight: 500, fontStyle: "normal", fontFamily: "var(--sans)" }}>+$170/unit blended premium</span> opportunity.
           </p>
         </div>
@@ -358,9 +358,9 @@ function CompsSection() {
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 0, marginTop: 40, border: "1px solid var(--rule)", borderRight: 0 }}>
             {[
-              { v: "$161,207", l: "Milana Reserve · Price/Unit" },
+              { v: "$159,914", l: "Milana Reserve · Price/Unit" },
               { v: "$208,920", l: "Comp Average · Price/Unit" },
-              { v: "−22.8%", l: "Discount to Comps", hi: true },
+              { v: "−23.5%", l: "Discount to Comps", hi: true },
             ].map((s, i) => (
               <div key={i} style={{ padding: "32px 28px", borderRight: "1px solid var(--rule)" }}>
                 <div style={{ fontFamily: "var(--serif)", fontSize: 48, color: s.hi ? "var(--gold)" : "var(--navy-900)", lineHeight: 1 }}>{s.v}</div>
