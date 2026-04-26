@@ -229,7 +229,7 @@ section.tight { padding: clamp(56px, 7vw, 100px) 0; }
   position: absolute; inset: 0;
   background-image:
     linear-gradient(180deg, rgba(6,14,34,0.55) 0%, rgba(6,14,34,0.75) 55%, rgba(6,14,34,0.95) 100%),
-    var(--hero-image, url("https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front.jpg")),
+    var(--hero-image, url("/images/photo-exterior-front.jpg")),
     radial-gradient(ellipse 85% 75% at 65% 35%, rgba(201, 169, 97, 0.3) 0%, transparent 60%),
     linear-gradient(135deg, #0f2547 0%, #0a1e3b 50%, #050d22 100%);
   background-size: cover;
@@ -532,7 +532,8 @@ section.tight { padding: clamp(56px, 7vw, 100px) 0; }
   font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--muted);
 }
-.table td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+.table td { font-family: var(--serif); font-size: 16px; font-weight: 400; }
+.table td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 14px; text-align: right; }
 .table th.num { text-align: right; }
 .table tr.subject { background: rgba(201,169,97,0.1); }
 .table tr.subject td { font-weight: 500; color: var(--navy-900); }
@@ -1141,14 +1142,20 @@ html, body { overflow-x: hidden; }
 }
 .spec-row dd {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.3;
   color: var(--navy-900);
 }
+.spec-row dd.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
 @media (max-width: 640px) {
   .spec-row { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
-  .spec-row dd { font-size: 18px; }
+  .spec-row dd { font-size: 16px; }
 }
 
 
