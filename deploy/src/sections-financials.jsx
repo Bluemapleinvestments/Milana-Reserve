@@ -21,51 +21,46 @@ function FinancialsSection() {
           <div>
             <h3 style={{ marginBottom: 20 }}>Sources &amp; Uses</h3>
 
-            {/* Split into two mini-columns inside the left half */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
+            {/* Stack Uses above Sources so each has full width */}
+            <div>
               {/* USES */}
-              <div>
-                <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginBottom: 12 }}>Uses</div>
-                {[
-                  ["Purchase Price", "$37,100,000"],
-                  ["Closing Costs", "$2,457,355"],
-                  ["CapEx — Units", "$2,233,000"],
-                  ["CapEx — Common", "$334,004"],
-                ].map(([k, v], i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "11px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 13 }}>
-                    <span style={{ color: "rgba(245,241,232,0.75)" }}>{k}</span>
-                    <span className="mono" style={{ color: "var(--cream)" }}>{v}</span>
-                  </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "space-between", padding: "13px 0", borderTop: "1px solid var(--gold)", fontSize: 13, fontWeight: 500, color: "var(--gold-soft)" }}>
-                  <span>All-In Cost</span>
-                  <span className="mono">$42,124,359</span>
+              <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginBottom: 10 }}>Uses</div>
+              {[
+                ["Purchase Price", "$37,100,000"],
+                ["Closing Costs", "$2,457,355"],
+                ["CapEx — Units", "$2,233,000"],
+                ["CapEx — Common Areas", "$334,004"],
+              ].map(([k, v], i) => (
+                <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "12px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 14 }}>
+                  <span style={{ color: "rgba(245,241,232,0.75)" }}>{k}</span>
+                  <span className="mono" style={{ color: "var(--cream)" }}>{v}</span>
                 </div>
+              ))}
+              <div style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderTop: "1px solid var(--gold)", fontSize: 14, fontWeight: 500, color: "var(--gold-soft)" }}>
+                <span>All-In Cost</span>
+                <span className="mono">$42,124,359</span>
               </div>
 
               {/* SOURCES */}
-              <div>
-                <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginBottom: 12 }}>Sources</div>
-                {[
-                  ["Senior Loan · Freddie Mac", "$25,812,000", "61.3%"],
-                  ["Institutional Equity", "$10,276,786", "24.4%"],
-                  ["Common Equity · LP raise", "$6,035,573", "14.3%", true],
-                ].map(([k, v, pct, isRaise], i) => (
-                  <div key={i} style={{
-                    display: "grid", gridTemplateColumns: "1fr auto auto", gap: 10,
-                    alignItems: "baseline",
-                    padding: "11px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 13,
-                    color: isRaise ? "var(--gold)" : "rgba(245,241,232,0.85)",
-                  }}>
-                    <span style={{ fontWeight: isRaise ? 500 : 400 }}>{k}</span>
-                    <span className="mono" style={{ textAlign: "right" }}>{v}</span>
-                    <span className="mono" style={{ fontSize: 11, color: isRaise ? "var(--gold)" : "rgba(245,241,232,0.5)", minWidth: 44, textAlign: "right" }}>{pct}</span>
-                  </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "space-between", padding: "13px 0", borderTop: "1px solid var(--gold)", fontSize: 13, fontWeight: 500, color: "var(--gold-soft)" }}>
-                  <span>Total Capitalization</span>
-                  <span className="mono">$42,124,359</span>
+              <div className="eyebrow" style={{ color: "rgba(245,241,232,0.55)", marginTop: 32, marginBottom: 10 }}>Sources</div>
+              {[
+                ["Senior Loan · Freddie Mac · 61.3%", "$25,812,000"],
+                ["Institutional Equity · 24.4%", "$10,276,786"],
+                ["Common Equity · LP raise · 14.3%", "$6,035,573", true],
+              ].map(([k, v, isRaise], i) => (
+                <div key={i} style={{
+                  display: "flex", justifyContent: "space-between",
+                  padding: "12px 0", borderTop: "1px solid var(--rule-dark)", fontSize: 14,
+                  color: isRaise ? "var(--gold)" : "rgba(245,241,232,0.85)",
+                  fontWeight: isRaise ? 500 : 400,
+                }}>
+                  <span>{k}</span>
+                  <span className="mono">{v}</span>
                 </div>
+              ))}
+              <div style={{ display: "flex", justifyContent: "space-between", padding: "14px 0", borderTop: "1px solid var(--gold)", fontSize: 14, fontWeight: 500, color: "var(--gold-soft)" }}>
+                <span>Total Capitalization</span>
+                <span className="mono">$42,124,359</span>
               </div>
             </div>
 
@@ -87,7 +82,7 @@ function FinancialsSection() {
                 </div>
               </div>
               <div style={{ fontFamily: "var(--serif)", fontSize: 44, color: "var(--gold)", lineHeight: 1, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>
-                $6.04M
+                $6.41M
               </div>
             </div>
           </div>

@@ -257,6 +257,7 @@ section.tight { padding: clamp(56px, 7vw, 100px) 0; }
   color: var(--gold-soft);
   margin-bottom: clamp(20px, 3vw, 36px);
 }
+.hero-eyebrow > span:not(.line) { white-space: nowrap; }
 .hero-eyebrow .line { width: 56px; height: 1px; background: var(--gold); opacity: 0.6; }
 .hero h1.display {
   font-size: clamp(64px, 11vw, 200px);
@@ -324,7 +325,10 @@ section.tight { padding: clamp(56px, 7vw, 100px) 0; }
 .hero-lockup .confidential {
   font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
   color: rgba(245,241,232,0.55);
+  white-space: nowrap;
 }
+.hero-lockup .brand { white-space: nowrap; flex-shrink: 0; }
+.hero-lockup .brand span { white-space: nowrap; }
 
 /* Blue Maple leaf mark */
 .bm-leaf {

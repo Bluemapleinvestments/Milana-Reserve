@@ -1,13 +1,17 @@
 // Tweaks panel — lets the user change the hero image to a different real photo.
 // Ships with curated presets + a custom URL field. Persists via __edit_mode_set_keys.
 
+const _RP = (typeof window !== 'undefined' && window.resolvePhoto) ? window.resolvePhoto : (p => p);
+
 const HERO_PRESETS = [
-  { label: "Milana — front (default)",   url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front.jpg" },
-  { label: "Milana — front alt",          url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front-2.jpg" },
-  { label: "Milana — side",               url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-side.jpg" },
-  { label: "Milana — clubhouse",          url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-clubhouse-1.jpg" },
-  { label: "Milana — pool",               url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/pool.png" },
-  { label: "Milana — staged interior",    url: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-staged-wide.jpg" },
+  { label: "Walking trail (default)",     url: _RP("/images/photo-exterior-front.jpg") },
+  { label: "Resort pool",                 url: _RP("/images/photo-pool-main.jpg") },
+  { label: "Pool · wide angle",           url: _RP("/images/photo-pool-wide.jpg") },
+  { label: "Outdoor kitchen",             url: _RP("/images/photo-outdoor-kitchen.jpg") },
+  { label: "Living · open plan",          url: _RP("/images/photo-living-airy.jpg") },
+  { label: "Living · styled",             url: _RP("/images/photo-living-styled.jpg") },
+  { label: "Primary bedroom",             url: _RP("/images/photo-bedroom-real.jpg") },
+  { label: "Bathroom",                    url: _RP("/images/photo-bathroom-real.jpg") },
 ];
 
 function applyHeroImage(url) {

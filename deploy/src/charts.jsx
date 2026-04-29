@@ -157,26 +157,44 @@ function RentScatter() {
             style={{ opacity: rev ? 1 : 0, transition: "opacity 0.8s ease 0.8s" }}>
         Post-reno target · $1,646
       </text>
-      {/* points */}
-      {data.map((d, i) => {
-        const cx = x(d.avgSF), cy = y(d.rent);
-        const isSubj = d.subject;
-        return (
-          <g key={i} style={{ opacity: rev ? 1 : 0, transition: `opacity 0.6s ease ${0.1 + i*0.06}s, transform 0.6s ease ${0.1 + i*0.06}s`,
-                              transform: rev ? "scale(1)" : "scale(0.2)", transformOrigin: `${cx}px ${cy}px` }}>
-            {isSubj && <circle cx={cx} cy={cy} r="24" fill="none" stroke="#C9A961" strokeOpacity="0.4" />}
-            <circle cx={cx} cy={cy} r={isSubj ? 10 : 6}
-                    fill={isSubj ? "#C9A961" : "#1E4A8E"}
-                    stroke={isSubj ? "#0A1833" : "none"} strokeWidth="2" />
-            <text x={cx} y={cy - (isSubj ? 18 : 12)} textAnchor="middle"
-                  fontFamily="Inter Tight" fontSize={isSubj ? "12" : "10"}
-                  fontWeight={isSubj ? "500" : "400"}
-                  fill={isSubj ? "#0A1833" : "#3A4151"}>
-              {d.name}
-            </text>
-          </g>
-        );
-      })}
+      {/* points with collision-aware labels */}
+      {(() => {
+        // Compute label position per point: detect close-by neighbors and alternate above/below
+        const positioned = data.map((d, i) => {
+          const cx = x(d.avgSF), cy = y(d.rent);
+          return { ...d, i, cx, cy, dir: 1 }; // dir: 1 = above, -1 = below
+        });
+        // For each point, look for any prior point within label-collision range; alternate dir
+        positioned.forEach((p, i) => {
+          for (let j = 0; j < i; j++) {
+            const q = positioned[j];
+            if (Math.abs(p.cx - q.cx) < 80 && Math.abs(p.cy - q.cy) < 18) {
+              // collision — flip direction relative to neighbor
+              p.dir = -q.dir;
+            }
+          }
+        });
+        return positioned.map((d) => {
+          const { cx, cy, i, dir } = d;
+          const isSubj = d.subject;
+          const labelOffset = dir > 0 ? -(isSubj ? 18 : 14) : (isSubj ? 26 : 18);
+          return (
+            <g key={i} style={{ opacity: rev ? 1 : 0, transition: `opacity 0.6s ease ${0.1 + i*0.06}s, transform 0.6s ease ${0.1 + i*0.06}s`,
+                                transform: rev ? "scale(1)" : "scale(0.2)", transformOrigin: `${cx}px ${cy}px` }}>
+              {isSubj && <circle cx={cx} cy={cy} r="24" fill="none" stroke="#C9A961" strokeOpacity="0.4" />}
+              <circle cx={cx} cy={cy} r={isSubj ? 10 : 6}
+                      fill={isSubj ? "#C9A961" : "#1E4A8E"}
+                      stroke={isSubj ? "#0A1833" : "none"} strokeWidth="2" />
+              <text x={cx} y={cy + labelOffset} textAnchor="middle"
+                    fontFamily="Inter Tight" fontSize={isSubj ? "12" : "10"}
+                    fontWeight={isSubj ? "500" : "400"}
+                    fill={isSubj ? "#0A1833" : "#3A4151"}>
+                {d.name}
+              </text>
+            </g>
+          );
+        });
+      })()}
       {/* axis labels */}
       <text x={pad.l} y={H - 8} fontFamily="Inter Tight" fontSize="10" fill="#6B7280" letterSpacing="1.2">AVG UNIT SIZE →</text>
       <text x={pad.l - 60} y={pad.t + 10} fontFamily="Inter Tight" fontSize="10" fill="#6B7280" letterSpacing="1.2">AVG RENT ↑</text>

@@ -175,21 +175,30 @@ window.MR = {
     { name: "Johns Hopkins All Children's", mi: 6.8, min: 13, beds: 259, x: 30, y: 85 },
   ],
 
-  photos: {
-    exterior:     "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front.jpg",
-    exterior2:    "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-front-2.jpg",
-    exteriorSide: "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-exterior-side.jpg",
-    kitchen:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-kitchen.jpg",
-    bathroom:     "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-bathroom.jpg",
-    bedroom:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-bedroom.jpg",
-    living1:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-1.jpg",
-    living2:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-2.jpg",
-    staged:       "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-staged-2.jpg",
-    stagedWide:   "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-living-staged-wide.jpg",
-    fitness:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-fitness.jpg",
-    clubhouse:    "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-clubhouse-1.jpg",
-    leasing:      "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/photo-leasing-office.jpg",
-    pool:         "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/pool.png",
-    site:         "https://agent-69e3ec34dc23ad344ff30ecc--milanareserve.netlify.app/images/site-plan.png",
-  },
+    photos: (function() {
+      const R = (typeof window !== 'undefined' && window.resolvePhoto) ? window.resolvePhoto : (p => p);
+      return {
+    // Exterior / amenities
+    exterior:     R("/images/photo-exterior-front.jpg"),
+    exterior2:    R("/images/photo-exterior-front.jpg"),
+    exteriorSide: R("/images/photo-exterior-front.jpg"),
+    pool:         R("/images/photo-pool-main.jpg"),
+    poolSide:     R("/images/photo-pool-side.jpg"),
+    poolWide:     R("/images/photo-pool-wide.jpg"),
+    outdoorKitchen: R("/images/photo-outdoor-kitchen.jpg"),
+    // Interiors — all real photos
+    living1:      R("/images/photo-living-styled.jpg"),
+    living2:      R("/images/photo-living-airy.jpg"),
+    bedroom:      R("/images/photo-bedroom-real.jpg"),
+    bathroom:     R("/images/photo-bathroom-real.jpg"),
+    // Aliases for any older refs.
+    kitchen:      R("/images/photo-living-airy.jpg"),
+    staged:       R("/images/photo-living-styled.jpg"),
+    stagedWide:   R("/images/photo-living-airy.jpg"),
+    fitness:      R("/images/photo-living-airy.jpg"),
+    clubhouse:    R("/images/photo-pool-main.jpg"),
+    leasing:      R("/images/photo-exterior-front.jpg"),
+    site:         R("/images/photo-exterior-front.jpg"),
+      };
+    })(),
 };

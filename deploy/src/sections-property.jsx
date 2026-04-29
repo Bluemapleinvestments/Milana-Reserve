@@ -34,25 +34,22 @@ function BeforeAfterSection() {
   return (
     <section className="bg-cream">
       <div className="container">
-        <SectionHead n="·" eyebrow="Interior Renovation" title={<>From original <span className="italic">to premium.</span></>} />
+        <SectionHead n="·" eyebrow="Interior Renovation" title={<>Renovated interiors, <span className="italic">premium finish.</span></>} />
 
         <div className="reveal" style={{ marginBottom: 24 }}>
-          <BeforeAfter
-            before={MR.photos.kitchen}
-            after={MR.photos.staged}
-            beforeLabel="Original Interior (2009)"
-            afterLabel="Post-Renovation"
-          />
+          <div style={{ aspectRatio: "16/9", backgroundImage: `url(${MR.photos.living2})`, backgroundSize: "cover", backgroundPosition: "center", borderRadius: 2 }} />
+          <div style={{ marginTop: 12, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--muted)" }}>
+            Renovated unit · representative finish level
+          </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginTop: 40 }} className="reveal">
+        <div className="photo-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16, marginTop: 40 }}>
           {[
-            { img: MR.photos.stagedWide, cap: "Staged interior · post-renovation" },
-            { img: MR.photos.pool, cap: "Pool & amenity courtyard" },
-            { img: MR.photos.fitness, cap: "Modernized fitness center" },
+            { img: MR.photos.bedroom,  cap: "Primary bedroom · post-renovation" },
+            { img: MR.photos.bathroom, cap: "Bathroom · post-renovation" },
           ].map((p, i) => (
-            <figure key={i} style={{ margin: 0 }}>
-              <div style={{ aspectRatio: "4/3", backgroundImage: `url(${p.img})`, backgroundSize: "cover", backgroundPosition: "center" }} />
+            <figure key={i} className="reveal" style={{ margin: 0 }}>
+              <div style={{ aspectRatio: "4/3", backgroundImage: `url(${p.img})`, backgroundSize: "cover", backgroundPosition: "center", borderRadius: 2 }} />
               <figcaption style={{ marginTop: 10, fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--muted)" }}>
                 {p.cap}
               </figcaption>
@@ -88,7 +85,7 @@ function PropertySummary() {
     ["Rentable SF", "170,920 SF"],
     ["Avg Unit Size", "737 SF"],
     ["Land Area", "13.05 Acres"],
-    ["Occupancy", "95.7% (Aug 2025)"],
+    ["Occupancy", "95.7% (Feb 2026)"],
     ["Stories", "3"],
     ["Buildings", "12 Residential + 1 Clubhouse"],
     ["Parking", "347 spaces"],
@@ -149,15 +146,17 @@ function PropertySummary() {
 function Gallery() {
   const P = MR.photos;
   const tiles = [
-    { img: P.exterior,   span: "6 / span 6", row: "span 2", cap: "Exterior" },
-    { img: P.pool,       span: "1 / span 3", row: "span 2", cap: "Pool" },
-    { img: P.clubhouse,  span: "4 / span 2", row: "span 1", cap: "Clubhouse" },
-    { img: P.fitness,    span: "4 / span 2", row: "span 1", cap: "Fitness" },
-    { img: P.bedroom,    span: "1 / span 2", row: "span 1", cap: "Bedroom" },
-    { img: P.bathroom,   span: "3 / span 2", row: "span 1", cap: "Bathroom (pre-reno)" },
-    { img: P.living1,    span: "5 / span 4", row: "span 2", cap: "Living · Pre-reno" },
-    { img: P.leasing,    span: "9 / span 4", row: "span 2", cap: "Leasing Office" },
-    { img: P.exteriorSide,span: "1 / span 4", row: "span 1", cap: "Exterior Side" },
+    // Row 1 — large pool hero + walking trail
+    { img: P.pool,           span: "1 / span 8", row: "span 3", cap: "Resort-style Pool" },
+    { img: P.exterior,       span: "9 / span 4", row: "span 3", cap: "Walking Trail" },
+    // Row 2 — interiors trio
+    { img: P.living2,        span: "1 / span 5", row: "span 2", cap: "Living · Open Plan" },
+    { img: P.living1,        span: "6 / span 4", row: "span 2", cap: "Living · Styled" },
+    { img: P.bedroom,        span: "10 / span 3", row: "span 2", cap: "Primary Bedroom" },
+    // Row 3 — amenity + bath
+    { img: P.outdoorKitchen, span: "1 / span 7", row: "span 2", cap: "Outdoor Kitchen" },
+    { img: P.poolSide,       span: "8 / span 3", row: "span 2", cap: "Pool · Sun Deck" },
+    { img: P.bathroom,       span: "11 / span 2", row: "span 2", cap: "Bathroom" },
   ];
   return (
     <section className="bg-cream tight">
