@@ -1,5 +1,4 @@
 [build]
-  base = "deploy"
   publish = "."
 
 [[headers]]
