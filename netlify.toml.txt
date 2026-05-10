@@ -1,4 +1,3 @@
-# Netlify configuration for Milana Reserve
 [build]
   publish = "."
 
